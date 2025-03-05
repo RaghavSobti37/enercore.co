@@ -85,7 +85,7 @@
 
 .navbar .navbar-brand,
 .navbar a.btn {
-    height: 75px;
+    /* height: 75px; */
 }
 
 .navbar .navbar-nav .nav-link {
@@ -128,7 +128,6 @@
         display: block;
         border: none;
         margin-top: 0;
-        top: 150%;
         opacity: 0;
         visibility: hidden;
         transition: .5s;
