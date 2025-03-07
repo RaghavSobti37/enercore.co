@@ -1,79 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentPage = window.location.pathname.split("/").pop();
+            document.querySelectorAll(".nav-link").forEach(link => {
+                if (link.getAttribute("href") === currentPage) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+</head>
 <body>
-    
-</body>
-</html>
 
-<!-- navbar.html -->
- 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand mx-auto" href="#">
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">
             <img src="./NEWIMAGES/logo.png" alt="Logo" class="logoheader">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+
+        <!-- Navigation Links Container -->
+        <div class="nav-links">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="project.html">Projects</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
             </ul>
         </div>
+
+        <!-- Call-to-Action Button -->
+        <a href="contact.html" class="cta-button">
+            <i class="fas fa-phone"></i> Get a Free Quote
+        </a>
     </div>
 </nav>
 
 <style>
-    /* Navbar styling */
+/* General Navbar Styling */
 .navbar {
-    padding: 10px 20px;
+    background-color: white; /* Match background color from the image */
+    padding: 15px 40px;
+}
+
+/* Logo Styling */
+.logoheader {
+    height: 50px;
+    width: auto;
+    transform: translateY(-20px);
+}
+
+/* Ensure nav-links container uses flexbox */
+.nav-links {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center; /* Centering the nav links */
+}
+
+/* Ensure navbar-nav stays in one row */
+.navbar-nav {
+    display: flex; /* Make sure links are in a row */
+    flex-direction: row; /* Explicitly set horizontal layout */
+    align-items: center;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+
+.nav-item {
     position: relative;
 }
 
-/* Center the logo within its container while keeping it visually left-aligned */
-/* Navbar Styling */
-.navbar {
+.nav-link {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #d1f4f3; /* Light color on hover */
+}
+
+/* Highlight Active Page */
+.nav-link.active {
+    color: white;
+    font-weight: bold;
+    border-bottom: 3px solid #ffcc00; /* Yellow underline */
+}
+
+/* Call-to-Action Button */
+.cta-button {
+    background-color: #000; /* Black button */
+    color: #f8ff80; /* Light green text */
     padding: 10px 20px;
-}
-
-/* Make the navbar content align properly */
-.container-fluid {
-    display: flex;
-    align-items: center; /* Vertically center all items */
-    justify-content: space-between;
-}
-
-/* Align logo to the left */
-.navbar-brand {
-    margin-right: auto; /* Pushes other elements to the right */
-    display: flex;
-    align-items: center; /* Ensures logo stays vertically centered */
-}
-
-/* Adjust logo size */
-.logoheader {
-    height: 50px; /* Adjust as needed */
-    width: auto;
-    margin-left: 50px;
-    margin-bottom: 20px;
-}
-
-/* Align nav items to the right */
-.navbar-nav {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* Adds spacing between menu items */
-}
-
-/* Make sure menu items are vertically aligned */
-.nav-item .nav-link {
+    border-radius: 25px;
     font-size: 16px;
     font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
+.cta-button i {
+    color: white;
+}
+
+.cta-button:hover {
+    background-color: #222; /* Slightly darker on hover */
+}
 </style>
+
+</body>
+</html>
