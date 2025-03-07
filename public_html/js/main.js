@@ -96,3 +96,26 @@
     
 })(jQuery);
 
+document.addEventListener("DOMContentLoaded", function () {
+    const track = document.querySelector(".carousel-track");
+    const cards = document.querySelectorAll(".carousel-card");
+    const cardWidth = cards[0].offsetWidth;
+    const totalCards = cards.length;
+    let currentPosition = 0;
+  
+    // Function to move the carousel
+    function moveCarousel(direction) {
+      if (direction === "next") {
+        currentPosition = (currentPosition + 1) % totalCards; // Loop to the start
+      } else if (direction === "prev") {
+        currentPosition = (currentPosition - 1 + totalCards) % totalCards; // Loop to the end
+      }
+      const offset = -currentPosition * (cardWidth + 20); // 20px for padding
+      track.style.transform = `translateX(${offset}px)`;
+    }
+  
+    // Event listeners for arrows
+    document.querySelector(".carousel-arrow.next").addEventListener("click", () => moveCarousel("next"));
+    document.querySelector(".carousel-arrow.prev").addEventListener("click", () => moveCarousel("prev"));
+  });
+

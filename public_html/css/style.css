@@ -648,33 +648,94 @@ body {
     background-color: rgba(76, 156, 73, 0.8);
     border: 2px solid #4c9c49;
 }
-.card {
+
+/* Carousel Wrapper */
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding: 0 50px; /* Space for arrows */
+  }
+  
+  /* Carousel Container */
+  .carousel-container {
+    overflow: hidden;
+  }
+  
+  /* Carousel Track */
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  /* Carousel Card */
+  .carousel-card {
+    flex: 0 0 calc(100% / 3); /* Show 3 cards at a time */
+    box-sizing: border-box;
+    padding: 0 10px; /* Spacing between cards */
+  }
+  
+  /* Card Styling */
+  .card {
     margin-bottom: 20px;
     border: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card-img-top {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-img-top {
     height: 200px;
     object-fit: cover;
-}
-
-.card-body {
+  }
+  
+  .card-body {
     padding: 20px;
-}
-
-.card-title {
+  }
+  
+  .card-title {
     color: #4c9c49; /* Green for card titles */
     font-weight: 600;
-}
-
-.card-text {
+  }
+  
+  .card-text {
     color: #666;
+  }
+  
+  /* Carousel Arrows */
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #4c9c49;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 18px;
+    z-index: 1;
+  }
+  
+  .carousel-arrow.prev {
+    left: 0;
+  }
+  
+  .carousel-arrow.next {
+    right: 0;
+  }
+  
+  .carousel-arrow:hover {
+    background-color: #3a7a37;
+  }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #4c9c49;
+    border-radius: 50%;
 }
 
 .btn-primary {
@@ -723,4 +784,103 @@ footer a:hover {
 .d-block w-100{
     display: block;
     height: 200px;
+}
+
+/* Custom Colors */
+:root {
+    --primary-green: #4c9c49;
+    --primary-orange: #ef9835;
+}
+
+.text-primary-green {
+    color: var(--primary-green) !important;
+}
+
+.bg-primary-green {
+    background-color: var(--primary-green) !important;
+}
+
+.text-primary-orange {
+    color: var(--primary-orange) !important;
+}
+
+.bg-primary-orange {
+    background-color: var(--primary-orange) !important;
+}
+
+.btn-primary-orange {
+    background-color: var(--primary-orange);
+    border: none;
+    color: white;
+}
+
+.btn-primary-orange:hover {
+    background-color: var(--primary-green);
+    color: white;
+}
+
+/* Reusable Text Div */
+.text-div {
+    margin: 37px; /* Margin on all sides */
+    padding: 20px; /* Inner padding */
+    border-radius: 15px; /* Rounded edges */
+    background-color: #fff; /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    height: 10%; /* Ensure full height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+}
+
+.text-div.left {
+    margin-right: 37px; /* Additional margin for left alignment */
+}
+
+.text-div.right {
+    margin-left: 37px; /* Additional margin for right alignment */
+}
+
+/* Reusable Image Div */
+.image-div {
+    margin: 37px; /* Margin on all sides */
+    border-radius: 15px; /* Rounded edges */
+    overflow: hidden; /* Ensure rounded edges for images */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    height: 100%; /* Match height of text div */
+    width: calc(100% - 74px); /* Match width of text div (37px margin on both sides) */
+    display: flex;
+    align-items: center; /* Center image vertically */
+    justify-content: center; /* Center image horizontally */
+}
+
+.image-div img {
+    width: 100%; /* Ensure image fills the div */
+    height: 10%; /* Ensure image fills the div */
+    object-fit: cover; /* Maintain aspect ratio */
+    border-radius: 15px; /* Rounded edges for image */
+}
+
+.image-div.left {
+    margin-right: 37px; /* Additional margin for left alignment */
+}
+
+.image-div.right {
+    margin-left: 37px; /* Additional margin for right alignment */
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .text-div, .image-div {
+        margin: 20px; /* Reduced margin for smaller screens */
+    }
+
+    .text-div.left, .text-div.right,
+    .image-div.left, .image-div.right {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .text-div h1 {
+        font-size: 2rem; /* Adjusted font size for smaller screens */
+    }
 }
