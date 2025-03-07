@@ -77,74 +77,6 @@
     font-weight: normal;
 }
 
-/*** Navbar ***/
-.navbar.sticky-top {
-    top: -100px;
-    transition: .5s;
-}
-
-.navbar .navbar-brand,
-.navbar a.btn {
-    height: 45px;
-}
-
-.navbar .navbar-nav .nav-link {
-    margin-right: 30px;
-    padding: 25px 0;
-    color: var(--dark);
-    font-size: 15px;
-    font-weight: 500;
-    text-transform: uppercase;
-    outline: none;
-}
-
-.navbar .navbar-nav .nav-link:hover,
-.navbar .navbar-nav .nav-link.active {
-    color: var(--primary);
-}
-
-.navbar .dropdown-toggle::after {
-    border: none;
-    content: "\f107";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    vertical-align: middle;
-    margin-left: 8px;
-}
-
-@media (max-width: 991.98px) {
-    .navbar .navbar-nav .nav-link  {
-        margin-right: 0;
-        padding: 10px 0;
-    }
-
-    .navbar .navbar-nav {
-        border-top: 1px solid #EEEEEE;
-    }
-}
-
-@media (min-width: 992px) {
-    .navbar .nav-item .dropdown-menu {
-        display: block;
-        border: none;
-        margin-top: 0;
-        opacity: 0;
-        visibility: hidden;
-        transition: .5s;
-    }
-
-    .navbar .nav-item:hover .dropdown-menu {
-        top: 100%;
-        visibility: visible;
-        transition: .5s;
-        opacity: 1;
-    }
-}
-
-
-
-
-
 /*** Header ***/
 .owl-carousel-inner {
     position: relative;
@@ -656,6 +588,7 @@
 .logoheader {
     height: 40px; /* Adjust as needed */
     width: auto;
+    transform: translateY(-15px);
 }
 .logofooter{
     width: 175px;
@@ -672,25 +605,6 @@ body {
     font-family: 'Open Sans', sans-serif;
     background-color: #f8f9fa;
     color: #333;
-}
-
-.navbar {
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-brand img {
-    height: 50px;
-}
-
-.navbar-nav .nav-link {
-    color: #333;
-    font-weight: 500;
-}
-
-.navbar-nav .nav-link.active,
-.navbar-nav .nav-link:hover {
-    color: #4c9c49; /* Green for active/hover links */
 }
 
 /* Carousel Container */
@@ -734,7 +648,6 @@ body {
     background-color: rgba(76, 156, 73, 0.8);
     border: 2px solid #4c9c49;
 }
-
 .card {
     margin-bottom: 20px;
     border: none;
