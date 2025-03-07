@@ -71,12 +71,52 @@
                                         <label for="email">Your Email</label>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <!-- <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                        <label for="subject">Subject</label>
+                                        <input type="text" class="form-control" id="location" placeholder="Location">
+                                        <label for="location">Location</label>
+                                    </div>
+                                </div> -->
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="location" placeholder="Location" autocomplete="off">
+                                        <label for="location">Location</label>
+                                        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
                                     </div>
                                 </div>
+                                <script>
+                                    function initializeAutocomplete() {
+                                        const input = document.getElementById('location');
+                                        const autocomplete = new google.maps.places.Autocomplete(input, {
+                                            types: ['geocode'], // Restrict to geographic locations
+                                        });
+                                
+                                        // Optional: Add an event listener to handle place selection
+                                        autocomplete.addListener('place_changed', () => {
+                                            const place = autocomplete.getPlace();
+                                            console.log('Selected Place:', place);
+                                        });
+                                    }
+                                
+                                    // Initialize the autocomplete when the page loads
+                                    window.onload = initializeAutocomplete;
+                                </script>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="tel" class="form-control" id="mobile" placeholder="Mobile Number">
+                                        <label for="mobile">Mobile Number</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <!-- Media Attachment (Upload Bill Document) -->
+                                    <div class="form-floating mb-3">
+                                        <input type="file" class="form-control" id="billDocument" name="billDocument" accept=".pdf,.jpg,.jpeg,.png" required>
+                                        <label for="billDocument">Upload Electricity Bill</label>
+                                        <small class="form-text text-muted">Upload a scanned copy or photo of your electricity bill (PDF, JPG, JPEG, or PNG).</small>
+                                    </div>
+                                </div>
+                                
                                 <div class="col-12">
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>

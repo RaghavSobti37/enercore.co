@@ -278,7 +278,7 @@
 
 
 /*** About ***/
-/* @media (min-width: 992px) {
+@media (min-width: 992px) {
     .container.about {
         max-width: 100% !important;
     }
@@ -298,64 +298,8 @@
     .about-text  {
         padding-right: calc(((100% - 1320px) / 2) + .75rem);
     }
-} */
-
-
-
-/* General Styling for About Section */
-.container.about {
-    max-width: 100% !important;
 }
 
-.about-text {
-    padding: 2rem;
-}
-
-/* Responsive Padding Adjustments */
-@media (min-width: 992px) {
-    .about-text {
-        padding-right: calc(((100% - 960px) / 2) + .75rem);
-    }
-}
-
-@media (min-width: 1200px) {
-    .about-text {
-        padding-right: calc(((100% - 1140px) / 2) + .75rem);
-    }
-}
-
-@media (min-width: 1400px) {
-    .about-text {
-        padding-right: calc(((100% - 1320px) / 2) + .75rem);
-    }
-}
-
-/* Image Styling */
-.position-relative img {
-    border-radius: 10px; /* Optional: Add rounded corners to the image */
-    display: block; /* Ensure the image is displayed as a block element */
-}
-
-/* Text Styling */
-.text-primary {
-    color: #007bff !important; /* Primary color for headings */
-}
-
-h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-}
-
-p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-.fa-check-circle {
-    margin-right: 0.5rem;
-}
 
 
 /*** Service ***/
@@ -616,6 +560,7 @@ p {
 @media (min-width: 992px) {
     .container.contact {
         max-width: 100% !important;
+        margin-left: 20px;
     }
 
     .contact-text  {
