@@ -85,7 +85,7 @@
 
 .navbar .navbar-brand,
 .navbar a.btn {
-    /* height: 75px; */
+    height: 45px;
 }
 
 .navbar .navbar-nav .nav-link {
