@@ -731,6 +731,10 @@ body {
   .carousel-arrow:hover {
     background-color: #3a7a37;
   }
+  
+  .carousel-arrow:hover {
+    background-color: #3a7a37;
+  }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {

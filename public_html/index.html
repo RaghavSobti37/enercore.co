@@ -170,8 +170,46 @@
               });
           </script>
     </div> 
-
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const track = document.querySelector(".carousel-track");
+        const cards = document.querySelectorAll(".carousel-card");
+        const totalCards = cards.length;
+        let currentIndex = 0;
+      
+        // Function to update the carousel display
+        function updateCarousel() {
+          // Remove all cards from the track
+          track.innerHTML = "";
+      
+          // Add the current 3 cards to the track
+          for (let i = 0; i < 3; i++) {
+            const cardIndex = (currentIndex + i) % totalCards;
+            track.appendChild(cards[cardIndex].cloneNode(true));
+          }
+        }
+      
+        // Function to move the carousel forward
+        function moveNext() {
+          currentIndex = (currentIndex + 1) % totalCards; // Loop to the start if at the end
+          updateCarousel();
+        }
+      
+        // Function to move the carousel backward
+        function movePrev() {
+          currentIndex = (currentIndex - 1 + totalCards) % totalCards; // Loop to the end if at the start
+          updateCarousel();
+        }
+      
+        // Event listeners for arrows
+        document.querySelector(".carousel-arrow.next").addEventListener("click", moveNext);
+        document.querySelector(".carousel-arrow.prev").addEventListener("click", movePrev);
+      
+        // Initialize the carousel
+        updateCarousel();
+      });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="./js/main.js" defer></script>
   </body>
 </html>
