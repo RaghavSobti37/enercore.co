@@ -49,7 +49,7 @@
         <!-- Cards -->
         <div class="carousel-card">
           <div class="card">
-            <a href="project.html">
+            <a href="service.html">
               <img src="./img/img-600x400-1.jpg" class="card-img-top" alt="Opex Projects" />
             </a>
             <div class="card-body">
@@ -62,7 +62,7 @@
         </div>
         <div class="carousel-card">
           <div class="card">
-            <a href="project.html">
+            <a href="service.html">
               <img src="./img/img-600x400-2.jpg" class="card-img-top" alt="Open Access Capex Project" />
             </a>
             <div class="card-body">
@@ -75,7 +75,7 @@
         </div>
         <div class="carousel-card">
           <div class="card">
-            <a href="project.html">
+            <a href="service.html">
               <img src="./img/img-600x400-3.jpg" class="card-img-top" alt="Design & Engineering Consultancy" />
             </a>
             <div class="card-body">
@@ -88,7 +88,7 @@
         </div>
         <div class="carousel-card">
           <div class="card">
-            <a href="project.html">
+            <a href="service.html">
               <img src="./img/img-600x400-3.jpg" class="card-img-top" alt="End to End Consulting" />
             </a>
             <div class="card-body">
@@ -101,7 +101,7 @@
         </div>
         <div class="carousel-card">
           <div class="card">
-            <a href="project.html">
+            <a href="service.html">
               <img src="./img/img-600x400-3.jpg" class="card-img-top" alt="Asset Management" />
             </a>
             <div class="card-body">
@@ -114,7 +114,7 @@
         </div>
         <div class="carousel-card">
           <div class="card">
-            <a href="project.html">
+            <a href="service.html">
               <img src="./img/img-600x400-1.jpg" class="card-img-top" alt="Asset Management" />
             </a>
             <div class="card-body">
@@ -176,6 +176,7 @@
         const cards = document.querySelectorAll(".carousel-card");
         const totalCards = cards.length;
         let currentIndex = 0;
+        let autoScrollInterval;
       
         // Function to update the carousel display
         function updateCarousel() {
@@ -201,12 +202,27 @@
           updateCarousel();
         }
       
+        // Function to start auto-scrolling
+        function startAutoScroll() {
+          autoScrollInterval = setInterval(moveNext, 4000); // Move every 4 seconds
+        }
+      
+        // Function to stop auto-scrolling
+        function stopAutoScroll() {
+          clearInterval(autoScrollInterval);
+        }
+      
         // Event listeners for arrows
         document.querySelector(".carousel-arrow.next").addEventListener("click", moveNext);
         document.querySelector(".carousel-arrow.prev").addEventListener("click", movePrev);
       
-        // Initialize the carousel
+        // Pause auto-scroll on hover (optional)
+        track.addEventListener("mouseenter", stopAutoScroll);
+        track.addEventListener("mouseleave", startAutoScroll);
+      
+        // Initialize the carousel and start auto-scroll
         updateCarousel();
+        startAutoScroll();
       });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
