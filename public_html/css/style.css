@@ -239,6 +239,10 @@
     box-shadow: 0 0 45px rgba(0, 0, 0, .08);
 }
 
+.about-text h4 {
+    color: #4c9c49;
+}
+
 .service-icon {
     position: relative;
     margin: -50px 0 25px 0;
