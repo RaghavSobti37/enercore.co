@@ -13,24 +13,24 @@
     </div> -->
     <!-- Spinner End -->
 
-  <!--fetch head-->
-  <script>
-    fetch("head.html")
-      .then((response) => response.text())
-      .then((data) => {
-        document.getElementById("head").innerHTML = data;
-      });
-  </script>
+    <!-- Fetch Head -->
+    <script>
+        fetch("head.html")
+            .then((response) => response.text())
+            .then((data) => {
+                document.getElementById("head").innerHTML = data;
+            });
+    </script>
 
-  <!--fetch navbar-->
-  <div id="navbar-placeholder"></div>
-  <script>
-    fetch("./navbar.html")
-      .then((response) => response.text())
-      .then((data) => {
-        document.getElementById("navbar-placeholder").innerHTML = data;
-      });
-  </script>
+    <!-- Fetch Navbar -->
+    <div id="navbar-placeholder"></div>
+    <script>
+        fetch("./navbar.html")
+            .then((response) => response.text())
+            .then((data) => {
+                document.getElementById("navbar-placeholder").innerHTML = data;
+            });
+    </script>
 
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5">
@@ -47,8 +47,6 @@
     </div>
     <!-- Page Header End -->
 
-
-    <!-- Contact Start -->
     <div class="container-fluid bg-light overflow-hidden px-lg-0" style="margin: 6rem 0;">
         <div class="container contact px-lg-0">
             <div class="row g-0 mx-lg-0">
@@ -56,71 +54,37 @@
                     <div class="p-lg-5 ps-lg-0">
                         <h6 class="text-primary">Contact Us</h6>
                         <h1 class="mb-4">Feel Free To Contact Us</h1>
-                        <!-- <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p> -->
-                        <form>
+                        <form id="contactForm">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
                                         <label for="name">Your Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
                                         <label for="email">Your Email</label>
                                     </div>
                                 </div>
-                                <!-- <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="location" placeholder="Location">
-                                        <label for="location">Location</label>
-                                    </div>
-                                </div> -->
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="location" placeholder="Location" autocomplete="off">
-                                        <label for="location">Location</label>
-                                        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
-                                    </div>
-                                </div>
-                                <script>
-                                    function initializeAutocomplete() {
-                                        const input = document.getElementById('location');
-                                        const autocomplete = new google.maps.places.Autocomplete(input, {
-                                            types: ['geocode'], // Restrict to geographic locations
-                                        });
-                                
-                                        // Optional: Add an event listener to handle place selection
-                                        autocomplete.addListener('place_changed', () => {
-                                            const place = autocomplete.getPlace();
-                                            console.log('Selected Place:', place);
-                                        });
-                                    }
-                                
-                                    // Initialize the autocomplete when the page loads
-                                    window.onload = initializeAutocomplete;
-                                </script>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="tel" class="form-control" id="mobile" placeholder="Mobile Number">
+                                        <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required>
                                         <label for="mobile">Mobile Number</label>
                                     </div>
                                 </div>
-
                                 <div class="col-12">
-                                    <!-- Media Attachment (Upload Bill Document) -->
                                     <div class="form-floating mb-3">
                                         <input type="file" class="form-control" id="billDocument" name="billDocument" accept=".pdf,.jpg,.jpeg,.png" required>
                                         <label for="billDocument">Upload Electricity Bill</label>
                                         <small class="form-text text-muted">Upload a scanned copy or photo of your electricity bill (PDF, JPG, JPEG, or PNG).</small>
                                     </div>
                                 </div>
-                                
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                        <label for="message">Message</label>
+                                        <textarea class="form-control" placeholder="Leave a message here" id="message" name="message" style="height: 100px"></textarea>
+                                        <label for="message">Message (Optional)</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -133,39 +97,80 @@
                 <div class="col-lg-6 pe-lg-0" style="min-height: 400px;">
                     <div class="position-relative h-100">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7119.969888146669!2d81.01263428139225!3d26.84043117380572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399be302a294e4f7%3A0xfdda05956d09cad6!2sGomtinagar%20Extension%2C%20Khargapur%2C%20Gomti%20Nagar%2C%20Lucknow%2C%20Uttar%20Pradesh%20226010!5e0!3m2!1sen!2sin!4v1724736114550!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-                        <!-- <iframe src="" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Contact End -->
+    
+    <!-- Add Google Maps API Script (if needed later) -->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places"></script> -->
+
+    
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
+            e.preventDefault(); // Prevent default form submission
+        
+            const formData = new FormData();
+            formData.append('name', document.getElementById('name').value);
+            formData.append('email', document.getElementById('email').value);
+            formData.append('mobile', document.getElementById('mobile').value);
+            formData.append('message', document.getElementById('message').value);
+        
+            const fileInput = document.getElementById('billDocument');
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                formData.append('file', file);
+                formData.append('filename', file.name);
+            }
+        
+            try {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbxUJsQauuYGrIJPm1Y0JBtbhJdCxQXKkL1QPM2aHsWRYByIzG5fgxNavqs_L8MO7ec/exec', {
+                    method: 'POST',
+                    body: formData
+                });
+        
+                const text = await response.text();
+                try {
+                    const json = JSON.parse(text);
+                    if (json.status === "success") {
+                        alert('Message sent successfully! File URL: ' + json.fileUrl);
+                        document.getElementById('contactForm').reset();
+                    } else {
+                        alert('An error occurred: ' + json.message);
+                    }
+                } catch (jsonError) {
+                    <!-- console.error("Invalid JSON response:", text); -->
+                    alert("An unexpected error occurred. Please try again.");
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            }
+        });              
+    </script>
 
 
-        <!-- Footer Start -->
-        <div id="footer">
-            <script>
-                fetch("footer.html")
-                  .then((response) => response.text())
-                  .then((data) => {
+    <!-- Footer Start -->
+    <div id="footer">
+        <script>
+            fetch("footer.html")
+                .then((response) => response.text())
+                .then((data) => {
                     document.getElementById("footer").innerHTML = data;
-                  });
-              </script>
-        </div>
-        <!-- Footer End -->
+                });
+        </script>
+    </div>
+    <!-- Footer End -->
 
-  <!-- whatsapp integration start -->
-  <div class="whatsapp-float">
-    <a href="https://wa.me/+919560557193" target="_blank"><img src="./NEWIMAGES/wp.jpg" style="z-index: 1;" alt=""
-            whatsapp-float-btn></a>
-</div>
-<!-- whatsapp integration end -->
-
+    <!-- WhatsApp Integration Start -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/+919560557193" target="_blank"><img src="./NEWIMAGES/wp.jpg" style="z-index: 1;" alt="WhatsApp"></a>
+    </div>
+    <!-- WhatsApp Integration End -->
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
-
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

@@ -742,7 +742,6 @@ body {
     border: none;
     padding: 10px;
     cursor: pointer;
-    border-radius: 50%;
     font-size: 18px;
     z-index: 1;
   }
