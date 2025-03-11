@@ -1,3 +1,6 @@
+
+
+
 (function ($) {
     "use strict";
 
@@ -94,29 +97,69 @@
         portfolioIsotope.isotope({filter: $(this).data('filter')});
     });
     
-})(jQuery);
+})
 
 document.addEventListener("DOMContentLoaded", function () {
-    const track = document.querySelector(".carousel-track");
-    const cards = document.querySelectorAll(".carousel-card");
-    const cardWidth = cards[0].offsetWidth + 20; // Include padding
-    const totalCards = cards.length;
-    let currentPosition = 0;
-  
-    // Function to move the carousel
-    function moveCarousel(direction) {
-      if (direction === "next") {
-        currentPosition = (currentPosition + 1) % totalCards; // Move to the next card
-      } else if (direction === "prev") {
-        currentPosition = (currentPosition - 1 + totalCards) % totalCards; // Move to the previous card
-      }
-  
-      // Calculate the offset for the carousel track
-      const offset = -currentPosition * cardWidth;
-      track.style.transform = `translateX(${offset}px)`;
+    function initializeCarousel(trackSelector, prevSelector, nextSelector) {
+        const track = document.querySelector(trackSelector);
+        const prevButton = document.querySelector(prevSelector);
+        const nextButton = document.querySelector(nextSelector);
+
+        if (!track || !prevButton || !nextButton) return;
+
+        let currentIndex = 0;
+        const cards = Array.from(track.children);
+        const totalCards = cards.length;
+        const visibleCards = 3; // Adjust this based on design
+
+        function updateCarousel() {
+            const offset = -currentIndex * (100 / visibleCards);
+            track.style.transform = `translateX(${offset}%)`;
+        }
+
+        function moveNext() {
+            if (currentIndex < totalCards - visibleCards) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            updateCarousel();
+        }
+
+        function movePrev() {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = totalCards - visibleCards;
+            }
+            updateCarousel();
+        }
+
+        function startAutoScroll() {
+            return setInterval(moveNext, 4000);
+        }
+
+        let autoScroll = startAutoScroll();
+
+        prevButton.addEventListener("click", () => {
+            movePrev();
+            clearInterval(autoScroll);
+            autoScroll = startAutoScroll();
+        });
+
+        nextButton.addEventListener("click", () => {
+            moveNext();
+            clearInterval(autoScroll);
+            autoScroll = startAutoScroll();
+        });
+
+        track.addEventListener("mouseenter", () => clearInterval(autoScroll));
+        track.addEventListener("mouseleave", () => autoScroll = startAutoScroll());
+
+        updateCarousel();
     }
-  
-    // Event listeners for arrows
-    document.querySelector(".carousel-arrow.next").addEventListener("click", () => moveCarousel("next"));
-    document.querySelector(".carousel-arrow.prev").addEventListener("click", () => moveCarousel("prev"));
-  });
+
+    // Initialize carousels separately
+    initializeCarousel(".service-track", ".service-prev", ".service-next");
+    initializeCarousel(".project-track", ".project-prev", ".project-next");
+});
