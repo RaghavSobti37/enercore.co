@@ -672,7 +672,6 @@ body {
     transition: transform 0.5s ease-in-out;
     gap: 11px; /* Add gap between cards */
   }
-  
 /* Carousel Card */
 .carousel-card {
     flex: 0 0 calc(100% / 3); /* Show 3 cards at a time */
@@ -687,6 +686,26 @@ body {
     display: flex; /* Ensure cards stretch to the same height */
     
   }
+  .carousel-wrapper-2 {
+    position: relative;
+    overflow: hidden;
+    padding: 0 50px; /* Space for arrows */
+  }
+  
+  /* Carousel Container */
+  .carousel-container-2 {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Carousel Track */
+  .carousel-track-2 {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 11px;
+    will-change: transform; /* Optimizes performance */
+}
+
   
   /* Card Styling */
   .card {
