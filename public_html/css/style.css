@@ -675,12 +675,24 @@ body {
     
   }
 
+  @media (max-width: 768px) {
+    .carousel-card {
+        flex: 0 0 100%;
+    }
+}
+
 .carousel-card-2 {
     flex: 0 0 calc(100% / 3); /* Show 3 cards at a time */
     box-sizing: border-box;
     display: flex; /* Ensure cards stretch to the same height */
     
   }
+
+  @media (max-width: 768px) {
+    .carousel-card {
+        flex: 0 0 100%;
+    }
+}
   .carousel-wrapper-2 {
     position: relative;
     overflow: hidden;

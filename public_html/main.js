@@ -99,67 +99,103 @@
     
 })
 
-document.addEventListener("DOMContentLoaded", function () {
-    function initializeCarousel(trackSelector, prevSelector, nextSelector) {
-        const track = document.querySelector(trackSelector);
-        const prevButton = document.querySelector(prevSelector);
-        const nextButton = document.querySelector(nextSelector);
+document.addEventListener("DOMContentLoaded", function() {
+    // Initialize all carousels on the page
+    document.querySelectorAll('.carousel-track').forEach(track => {
+        setupCarousel(track);
+    });
+});
 
-        if (!track || !prevButton || !nextButton) return;
-
-        let currentIndex = 0;
-        const cards = Array.from(track.children);
-        const totalCards = cards.length;
-        const visibleCards = 3; // Adjust this based on design
-
-        function updateCarousel() {
-            const offset = -currentIndex * (100 / visibleCards);
-            track.style.transform = `translateX(${offset}%)`;
-        }
-
-        function moveNext() {
-            if (currentIndex < totalCards - visibleCards) {
-                currentIndex++;
-            } else {
-                currentIndex = 0;
-            }
-            updateCarousel();
-        }
-
-        function movePrev() {
-            if (currentIndex > 0) {
-                currentIndex--;
-            } else {
-                currentIndex = totalCards - visibleCards;
-            }
-            updateCarousel();
-        }
-
-        function startAutoScroll() {
-            return setInterval(moveNext, 4000);
-        }
-
-        let autoScroll = startAutoScroll();
-
-        prevButton.addEventListener("click", () => {
-            movePrev();
-            clearInterval(autoScroll);
-            autoScroll = startAutoScroll();
-        });
-
-        nextButton.addEventListener("click", () => {
+function setupCarousel(track) {
+    const cards = track.querySelectorAll('.card');
+    const prevBtn = track.closest('.carousel-wrapper').querySelector('.carousel-arrow.prev');
+    const nextBtn = track.closest('.carousel-wrapper').querySelector('.carousel-arrow.next');
+    
+    let currentIndex = 0;
+    let autoScrollInterval;
+    const cardCount = cards.length;
+    let visibleCards = window.innerWidth <= 768 ? 1 : 3;
+    
+    // Set initial positions
+    updateCarousel();
+    
+    // Auto-scroll every 4 seconds
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(() => {
             moveNext();
-            clearInterval(autoScroll);
-            autoScroll = startAutoScroll();
-        });
-
-        track.addEventListener("mouseenter", () => clearInterval(autoScroll));
-        track.addEventListener("mouseleave", () => autoScroll = startAutoScroll());
-
+        }, 4000);
+    }
+    
+    // Start auto-scroll
+    startAutoScroll();
+    
+    // Next button click
+    nextBtn.addEventListener('click', () => {
+        clearInterval(autoScrollInterval);
+        moveNext();
+        startAutoScroll();
+    });
+    
+    // Previous button click
+    prevBtn.addEventListener('click', () => {
+        clearInterval(autoScrollInterval);
+        movePrev();
+        startAutoScroll();
+    });
+    
+    // Pause on hover
+    track.addEventListener('mouseenter', () => {
+        clearInterval(autoScrollInterval);
+    });
+    
+    track.addEventListener('mouseleave', () => {
+        startAutoScroll();
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        const newVisibleCards = window.innerWidth <= 768 ? 1 : 3;
+        if (newVisibleCards !== visibleCards) {
+            visibleCards = newVisibleCards;
+            updateCarousel();
+        }
+    });
+    
+    // Navigation functions - MODIFIED FOR MOBILE
+    function moveNext() {
+        if (window.innerWidth <= 768) {
+            // On mobile, move by exactly 1 full card
+            currentIndex = Math.min(currentIndex + 1, cardCount - 1);
+        } else {
+            // On desktop, move by 1 (showing 3 cards at a time)
+            currentIndex = (currentIndex + 1) % cardCount;
+        }
         updateCarousel();
     }
-
-    // Initialize carousels separately
-    initializeCarousel(".service-track", ".service-prev", ".service-next");
-    initializeCarousel(".project-track", ".project-prev", ".project-next");
-});
+    
+    function movePrev() {
+        if (window.innerWidth <= 768) {
+            // On mobile, move by exactly 1 full card backward
+            currentIndex = Math.max(currentIndex - 1, 0);
+        } else {
+            // On desktop
+            currentIndex = (currentIndex - 1 + cardCount) % cardCount;
+        }
+        updateCarousel();
+    }
+    
+    function updateCarousel() {
+        const cardWidth = 100 / visibleCards;
+        let offset;
+        
+        if (window.innerWidth <= 768) {
+            // Mobile - simple full card movement
+            offset = -currentIndex * 100;
+        } else {
+            // Desktop - normal movement
+            offset = -currentIndex * cardWidth;
+        }
+        
+        track.style.transform = `translateX(${offset}%)`;
+    }
+}
